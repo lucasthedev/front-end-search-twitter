@@ -1,0 +1,43 @@
+<form #formInserir="ngForm" class="container">
+  <div class="form-group">
+    <label for="nomeHashtag">Hashtag</label>
+    <input type="text" class="form-control" id="nomeHashtag" placeholder="#2020" [(ngModel)]="hashtag.nome" name="nome" required #nome="ngModel">
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="teste()" [disabled]="!formInserir.valid">Salvar</button>
+</form>
+
+
+
+<div class="container" id="listagem-cursos">
+  <div class="card-container">
+    <div class="card-header">
+      <div class="row">
+        <h4 class="col-10 text-center">Hashtags</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Carga Horária</th>
+            <th>Data Início</th>
+            <th>Dias da Semana</th>
+            <th>Vídeo Explicativo</th>
+            <th>Inscrever-se</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="display:none;">1</td>
+            <td>Maria</td>
+            <td>100</td>
+            <td>10/10/2010</td>
+            <td>3</td>
+            <td><button type="button" class="btn btn-secondary" (click)="remover()">Excluir</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
