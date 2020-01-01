@@ -5,14 +5,14 @@
         <thead>
           <tr>
             <th>Nome da Hashtag</th>
-            <th>Excluir</th>
+            <th class="text-center">Excluir</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style="display:none;">1</td>
-            <td>#Maria</td>
-            <td><button type="button" class="btn btn-secondary" (click)="remover()">Excluir</button></td>
+          <tr *ngFor="let tag of hashTags">
+            <td style="display:none;">{{tag._id}}</td>
+            <td>{{tag.hashtag}}</td>
+            <td class="text-center"><button type="button" class="btn btn-secondary" (click)="remover(tag._id)">Excluir</button></td>
           </tr>
         </tbody>
       </table>
