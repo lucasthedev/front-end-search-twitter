@@ -6,7 +6,6 @@ import { Hashtag } from './Hashtag';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': '',
     'Access-Control-Allow-Origin': '*'
   })
 };
@@ -40,6 +39,13 @@ export class HashtagService {
 
   excluirHashtag(id){
     return this.http.delete(this.urlExcluirHashtag + id, httpOptions);
+  }
+
+  urlRetornaTweets: string = 'https://stream.twitter.com/1.1/statuses/filter';
+
+  retornarTweets(hashtags){
+    console.log(hashtags);
+    return this.http.get(this.urlRetornaTweets, httpOptions);
   }
 
 }

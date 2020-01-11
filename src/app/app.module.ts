@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateHashtagComponent } from './create-hashtag/create-hashtag.component';
 import { ListHashtagsComponent } from './list-hashtags/list-hashtags.component';
+import { ListTweetsComponent } from './list-tweets/list-tweets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateHashtagComponent,
-    ListHashtagsComponent
+    ListHashtagsComponent,
+    ListTweetsComponent
   ],
   imports: [
     BrowserModule,

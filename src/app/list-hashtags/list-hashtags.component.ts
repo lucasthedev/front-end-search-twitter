@@ -18,7 +18,6 @@ export class ListHashtagsComponent implements OnInit {
 
   remover(id){
     if (confirm("Deseja excluir a hashtag selecionada ?")){
-      console.log('ID ' + id);
       this.service.excluirHashtag(id).subscribe(
         success => {
           alert('Hashtag excluída com sucesso.');
