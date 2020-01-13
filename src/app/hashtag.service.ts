@@ -3,17 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Hashtag } from './Hashtag';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': '*'
-  })
-};
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HashtagService {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'hashtags': ''
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -26,26 +29,44 @@ export class HashtagService {
       'hashtag': hashtag
     }
     
-    return this.http.post(this.urlCadastrarHashtag, obj, httpOptions);
+    return this.http.post(this.urlCadastrarHashtag, obj, this.httpOptions);
   }
 
   urlFindHashtag: string = this.urlBase + 'getHashtags';
 
   listarHashtags(){
-    return this.http.get<Hashtag[]>(this.urlFindHashtag, httpOptions);
+    return this.http.get<Hashtag[]>(this.urlFindHashtag, this.httpOptions);
   }
 
   urlExcluirHashtag:string = this.urlBase + 'delete/';
 
   excluirHashtag(id){
-    return this.http.delete(this.urlExcluirHashtag + id, httpOptions);
+    return this.http.delete(this.urlExcluirHashtag + id, this.httpOptions);
   }
 
-  urlRetornaTweets: string = 'https://stream.twitter.com/1.1/statuses/filter';
+  urlRetornaTweets: string = this.urlBase + 'getTweets';
 
   retornarTweets(hashtags){
-    console.log(hashtags);
-    return this.http.get(this.urlRetornaTweets, httpOptions);
+
+    var cabecalho = '';
+    hashtags.forEach(element => {
+      cabecalho += element.hashtag;
+    });
+
+    let myHttpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'hashtags': cabecalho
+      })
+    };
+
+    console.log('vai chama hein ');
+    console.log(myHttpOptions);
+
+    
+    console.log(myHttpOptions);
+    return this.http.get(this.urlRetornaTweets, myHttpOptions);
   }
 
 }
