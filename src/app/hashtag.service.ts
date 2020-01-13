@@ -61,11 +61,6 @@ export class HashtagService {
       })
     };
 
-    console.log('vai chama hein ');
-    console.log(myHttpOptions);
-
-    
-    console.log(myHttpOptions);
     return this.http.get(this.urlRetornaTweets, myHttpOptions);
   }
 
