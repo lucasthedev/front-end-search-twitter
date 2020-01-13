@@ -39,12 +39,7 @@ export class ListTweetsComponent implements OnInit {
   retornarTweets(){
     this.service.retornarTweets(this.Hashtags).subscribe(
       dados => {
-        console.log('SUCESSO')
-        console.log(dados);
         this.Tweets = dados;
-        console.log('VEIO OS DADOS');
-        console.log(this.Tweets);
-        console.log(this.Tweets.statuses[0].text);
       },
       error =>{
         console.log("Deu erro");
