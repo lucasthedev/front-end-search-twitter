@@ -20,7 +20,7 @@ export class ListTweetsComponent implements OnInit {
     this.buscarHashtags();
     setInterval(() => {
       this.buscarHashtags(); 
-      }, 10000);
+      }, 8000);
   }
 
   buscarHashtags(){
@@ -40,6 +40,7 @@ export class ListTweetsComponent implements OnInit {
     this.service.retornarTweets(this.Hashtags).subscribe(
       dados => {
         this.Tweets = dados;
+        this.Tweets = this.Tweets.statuses;
       },
       error =>{
         console.log("Deu erro");
